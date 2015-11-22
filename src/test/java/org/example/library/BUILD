@@ -3,6 +3,6 @@ java_test(
   srcs = ["HelloFormatterTest.java"],
   deps = [
     "//src/main/java/org/example/library",
-    "//third_party:junit4",
+    "//third_party/junit",
   ],
 )
