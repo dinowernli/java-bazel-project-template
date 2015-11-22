@@ -14,8 +14,13 @@ public class HelloFormatterTest {
   }
 
   @Test
-  public void testNoArgument() {
-    assertEquals("Hello, world", formatter.format("world"));
+  public void usesGreetings() {
+    assertEquals("Greetings, world", formatter.format("world"));
+  }
+
+  @Test
+  public void usesHello() {
+    assertEquals("Hello, Mark", formatter.format("Mark"));
   }
 }
 

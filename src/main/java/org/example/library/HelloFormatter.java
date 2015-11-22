@@ -11,7 +11,7 @@ public class HelloFormatter {
   }
 
   private String pickGreeting(String name) {
-    int hash = name.hashCode();
+    int hash = name.length();
     return GREETINGS.get(hash % GREETINGS.size());
   }
 }
