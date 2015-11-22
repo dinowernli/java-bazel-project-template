@@ -15,7 +15,7 @@ In order to generate an eclipse project, run:
 > tools/generate-eclipse-neon.py
 ```
 
-Whenever the project gets outdated (e.g., when a new library was added), the command above needs to be re-run.
+Then, use `File > Import > General > Existing Projects into Workspace` to import the generated project into Eclipse. Whenever the project gets outdated (e.g., when a new library was added), the command above needs to be re-run.
 
 ####Requirements
 
