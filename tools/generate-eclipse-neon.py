@@ -11,9 +11,15 @@ def main():
         file.write(generate_classpath_contents())
 
     print('Generating .project file ...')
-    # TODO(dino): Actually generate .project.
+    with open('.project', 'w') as file:
+        file.write(generate_project_contents())
 
     print('Done')
+
+def generate_project_contents():
+    project_name = os.path.basename(os.getcwd())
+    print('Using project name: ' + project_name)
+    return PROJECT_FILE_TEMPLATE % { 'project_name': project_name }
 
 def generate_classpath_contents():
     jar_paths = discover_jars(LIBRARY_JAR_ROOT)
@@ -31,8 +37,7 @@ def discover_jars(root):
                 jar_paths.append(os.path.abspath(os.path.join(root, file)))
     return jar_paths
 
-CLASSPATH_TEMPLATE = """
-<?xml version="1.0" encoding="UTF-8"?>
+CLASSPATH_TEMPLATE = """<?xml version="1.0" encoding="UTF-8"?>
 <classpath>
         <classpathentry kind="src" path="src/main/java"/>
         <classpathentry kind="src" path="src/test/java"/>
@@ -44,6 +49,20 @@ CLASSPATH_TEMPLATE = """
 CLASSPATH_INDENT = """        """
 
 JAR_CLASSPATH_ENTRY_TEMPLATE = '<classpathentry kind="lib" path="%(path)s"/>'
+
+PROJECT_FILE_TEMPLATE = """<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+        <name>%(project_name)s</name>
+        <comment></comment>
+        <projects>
+        </projects>
+        <buildSpec>
+        </buildSpec>
+        <natures>
+                <nature>org.eclipse.jdt.core.javanature</nature>
+        </natures>
+</projectDescription>
+"""
 
 if __name__ == '__main__':
     main()
