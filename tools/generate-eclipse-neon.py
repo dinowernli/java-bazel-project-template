@@ -1,9 +1,11 @@
 #! /usr/bin/env python
 
 import os
+import subprocess
 from xml.etree.ElementTree import Element, SubElement, tostring
 
 LIBRARY_JAR_ROOT = os.path.join('bazel-genfiles', 'external')
+BUILD_EVERYTHING_COMMAND = ['bazel', 'build', 'src/...']
 
 def main():
     # Using relative paths for certain things makes our lives much easier, but
@@ -11,6 +13,10 @@ def main():
     if not os.path.isfile(os.path.join(os.getcwd(), 'WORKSPACE')):
         print('This script must be invoked from the WORKSPACE root.')
         return
+
+    # Build the project to make sure all jars are present.
+    print('Building project...')
+    subprocess.check_output(BUILD_EVERYTHING_COMMAND)
 
     print('Generating .classpath file ...')
     with open('.classpath', 'w') as file:
