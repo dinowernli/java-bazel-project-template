@@ -6,6 +6,12 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 LIBRARY_JAR_ROOT = os.path.join('bazel-genfiles', 'external')
 
 def main():
+    # Using relative paths for certain things makes our lives much easier, but
+    # this requires being run from the root of the Bazel workspace.
+    if not os.path.isfile(os.path.join(os.getcwd(), 'WORKSPACE')):
+        print('This script must be invoked from the WORKSPACE root.')
+        return
+
     print('Generating .classpath file ...')
     with open('.classpath', 'w') as file:
         file.write(generate_classpath_contents())
