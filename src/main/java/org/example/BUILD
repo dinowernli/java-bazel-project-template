@@ -5,6 +5,6 @@ java_binary(
   srcs = glob(['*.java']),
   main_class = "org.example.Main",
   deps = [
-    "//src/main/java/org/example/library:library",
+    "//src/main/java/org/example/library",
   ]
 )
