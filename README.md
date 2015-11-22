@@ -12,7 +12,7 @@ You can try it out by cloning the repo and running all the tests. This will caus
 In order to generate an eclipse project, run:
 
 ```
-> tools/generate-eclipse-neon.py
+> src/tools/generate-eclipse-neon.py
 ```
 
 Then, use `File > Import > General > Existing Projects into Workspace` to import the generated project into Eclipse. Whenever the project gets outdated (e.g., when a new library was added), the command above needs to be re-run.
