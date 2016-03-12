@@ -7,3 +7,6 @@ bazel*
 // Eclipse project.
 .classpath*
 .project*
+
+// Intellij stuff
+.idea
